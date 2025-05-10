@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家长教育观念问卷</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4a6fcf;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3558b0;
+        }
+        #result-page {
+            display: none;
+        }
+        .result-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        .result-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .合格 {
+            color: #28a745;
+        }
+        .不合格 {
+            color: #dc3545;
+        }
+        .analysis-text {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .detailed-results {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-page">
+        <h1>家长教育观念问卷</h1>
+        <p style="text-align: center; font-size: 16px; margin-bottom: 30px;">
+            亲爱的家长，您好！本问卷旨在了解您的教育观念，所有答案无对错之分，请如实作答。您的回答将帮助我们更好地理解家庭教育方式，从而更好地支持孩子的成长。
+        </p>
+
+        <!-- 选择题部分 -->
+        <h2 style="border-bottom: 2px solid #4a6fcf; padding-bottom: 10px;">一、核心观念选择题（25题，无情景，纯结构化）</h2>
+        <div class="question">
+            <p><strong>1. 孩子的兴趣爱好与学习成绩冲突时，您认为：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. 成绩是学生的首要任务，兴趣必须为学习让步</label>
+                <label><input type="radio" name="q1" value="B"> B. 兴趣是成长的重要部分，成绩可以通过高效方法提升</label>
+                <label><input type="radio" name="q1" value="C"> C. 允许兴趣存在，但需设定成绩达标底线（如排名进步10名）</label>
+                <label><input type="radio" name="q1" value="D"> D. 参考班级前10名学生的选择，他们的家长更有经验</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>2. 孩子提出想报“无人机拼装兴趣班”（无竞赛、无加分），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. 拒绝：“不加分的兴趣别浪费时间，不如报奥数”</label>
+                <label><input type="radio" name="q2" value="B"> B. 支持：“动手能力比加分更重要，尊重孩子选择”</label>
+                <label><input type="radio" name="q2" value="C"> C. 建议：“先保证数学95分以上，再考虑兴趣班”</label>
+                <label><input type="radio" name="q2" value="D"> D. 犹豫：“先看看其他家长是否给孩子报同类班”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>3. 老师反映孩子“上课走神，建议报专注力训练班”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. 立刻报名，“老师指出问题就要解决，不能拖延”</label>
+                <label><input type="radio" name="q3" value="B"> B. 观察孩子状态：“先和孩子沟通走神原因，再决定”</label>
+                <label><input type="radio" name="q3" value="C"> C. 认为“专注力差就是学习态度问题，必须强制训练”</label>
+                <label><input type="radio" name="q3" value="D"> D. 无所谓：“专注力班是智商税，顺其自然就好”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>4. 孩子坚持要参加“校园环保志愿者”（每周占用6小时），您认为：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. 反对：“初中学习紧张，这类活动毫无意义”</label>
+                <label><input type="radio" name="q4" value="B"> B. 支持：“社会责任感培养比分数更长远”</label>
+                <label><input type="radio" name="q4" value="C"> C. 妥协：“减少参与时间，优先完成作业”</label>
+                <label><input type="radio" name="q4" value="D"> D. 比较：“如果同班超过50%学生参加，就允许”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>5. 您认为“家长是否有权修改孩子的志愿填报（如文科改理科）”？</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. 有权：“家长更懂社会现实，孩子想法太幼稚”</label>
+                <label><input type="radio" name="q5" value="B"> B. 无权：“志愿应完全由孩子决定，家长仅提供建议”</label>
+                <label><input type="radio" name="q5" value="C"> C. 视情况：“若孩子分数够一本线，可尊重；否则家长主导”</label>
+                <label><input type="radio" name="q5" value="D"> D. 参考：“按本省热门专业报考，避免孩子走弯路”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>6. 孩子抱怨“补习班老师讲得太枯燥，不想去了”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. 训斥：“学习没有轻松的，别人能坚持你也能”</label>
+                <label><input type="radio" name="q6" value="B"> B. 退费：“换孩子喜欢的老师或学习方式”</label>
+                <label><input type="radio" name="q6" value="C"> C. 协商：“再坚持3个月，期末考进步就停课”</label>
+                <label><input type="radio" name="q6" value="D"> D. 无视：“提分比心情重要，必须继续”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>7. 班级群里家长频繁分享“孩子凌晨1点刷题”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A. 效仿：“别人努力，自己孩子也不能偷懒”</label>
+                <label><input type="radio" name="q7" value="B"> B. 质疑：“过度刷题影响健康，不跟风”</label>
+                <label><input type="radio" name="q7" value="C"> C. 焦虑：“担心孩子落后，暗中增加刷题量”</label>
+                <label><input type="radio" name="q7" value="D"> D. 中立：“按自家节奏来，不被他人影响”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>8. 孩子想放弃学了4年的小提琴（因高中住校），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A. 强迫继续：“考级证书对升学有用，必须坚持”</label>
+                <label><input type="radio" name="q8" value="B"> B. 同意放弃：“兴趣不应成为负担，随孩子心意”</label>
+                <label><input type="radio" name="q8" value="C"> C. 要求：“每周回家练琴2小时，否则生活费减半”</label>
+                <label><input type="radio" name="q8" value="D"> D. 纠结：“问问其他琴童家长怎么处理”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>9. 您认为“孩子的考试排名”在教育决策中的权重是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> A. 80%以上（排名决定一切）</label>
+                <label><input type="radio" name="q9" value="B"> B. 50%-80%（排名是重要参考）</label>
+                <label><input type="radio" name="q9" value="C"> C. 20%-50%（排名反映部分问题，需结合兴趣）</label>
+                <label><input type="radio" name="q9" value="D"> D. 20%以下（排名不重要，能力培养优先）</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>10. 孩子说“想当游戏主播”（成绩中等，擅长电竞），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A. 严厉反对：“不务正业，必须考大学找稳定工作”</label>
+                <label><input type="radio" name="q10" value="B"> B. 支持尝试：“新兴职业也有前景，尊重孩子选择”</label>
+                <label><input type="radio" name="q10" value="C"> C. 谈判：“考上本科后，允许兼职做主播”</label>
+                <label><input type="radio" name="q10" value="D"> D. 引导：“说服孩子主播吃青春饭，不如学计算机”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>11. 学校组织“无作业周末”，鼓励孩子自主探索，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A"> A. 自行布置作业：“不刷题成绩会下滑”</label>
+                <label><input type="radio" name="q11" value="B"> B. 支持学校：“给孩子真正的周末，探索比作业重要”</label>
+                <label><input type="radio" name="q11" value="C"> C. 折中：“允许玩1天，另1天做课外习题”</label>
+                <label><input type="radio" name="q11" value="D"> D. 焦虑：“别的家长都在补，不跟练会落后”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>12. 孩子在“班干部竞选”和“奥数集训”中选择前者，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="A"> A. 要求退出竞选：“班干部浪费时间，集训加分更实际”</label>
+                <label><input type="radio" name="q12" value="B"> B. 支持竞选：“领导力培养对未来更重要”</label>
+                <label><input type="radio" name="q12" value="C"> C. 建议：“如果能兼顾集训，就允许当班干部”</label>
+                <label><input type="radio" name="q12" value="D"> D. 参考：“看看学霸们是否当班干部，再做决定”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>13. 您认为“教育的终极目标”是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A"> A. 考上重点大学，获得高薪职业</label>
+                <label><input type="radio" name="q13" value="B"> B. 培养独立人格，找到人生热爱</label>
+                <label><input type="radio" name="q13" value="C"> C. 超越同龄人，成为“别人家的孩子”</label>
+                <label><input type="radio" name="q13" value="D"> D. 适应社会规则，过上稳定生活</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>14. 孩子未经允许，用压岁钱报了“脱口秀兴趣班”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A"> A. 退费并批评：“乱花钱，报班必须家长同意”</label>
+                <label><input type="radio" name="q14" value="B"> B. 接受并支持：“自主决策能力值得鼓励”</label>
+                <label><input type="radio" name="q14" value="C"> C. 要求：“下次报班先申请，这次允许试听”</label>
+                <label><input type="radio" name="q14" value="D"> D. 不满：“脱口秀对学习没用，不如报英语班”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>15. 中考/高考前3个月，孩子想暂停补习去“穷游锻炼”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A"> A. 拒绝：“关键时刻必须冲刺，旅游以后有的是时间”</label>
+                <label><input type="radio" name="q15" value="B"> B. 支持：“抗压能力培养比临时提分更重要”</label>
+                <label><input type="radio" name="q15" value="C"> C. 妥协：“缩短行程，回来后加倍补习”</label>
+                <label><input type="radio" name="q15" value="D"> D. 对比：“如果同班没人这样做，就不允许”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>16. 您给孩子报班的主要依据是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="A"> A. 机构宣传的“升学加分率”</label>
+                <label><input type="radio" name="q16" value="B"> B. 孩子的主动申请和兴趣</label>
+                <label><input type="radio" name="q16" value="C"> C. 其他家长的推荐和选择</label>
+                <label><input type="radio" name="q16" value="D"> D. 班主任的具体建议</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>17. 孩子成绩突然下滑20名，您第一反应是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="A"> A. 增加3科补习，“必须马上追上”</label>
+                <label><input type="radio" name="q17" value="B"> B. 与孩子谈心，“了解下滑原因再行动”</label>
+                <label><input type="radio" name="q17" value="C"> C. 指责孩子：“肯定是玩游戏/看小说耽误了”</label>
+                <label><input type="radio" name="q17" value="D"> D. 焦虑失眠，“担心考不上好学校”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>18. 孩子想“用暑假摆摊卖手工”（可能影响预习计划），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="A"> A. 阻止：“学生就该学习，摆摊是不务正业”</label>
+                <label><input type="radio" name="q18" value="B"> B. 支持：“社会实践比预习更有价值”</label>
+                <label><input type="radio" name="q18" value="C"> C. 约定：“每天摆摊不超过2小时，晚上必须预习”</label>
+                <label><input type="radio" name="q18" value="D"> D. 犹豫：“先看看其他家长是否允许孩子摆摊”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>19. 您认为“家长在微信群里跟风报班”的行为：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="A"> A. 很正常，“别人验证过的班更可靠”</label>
+                <label><input type="radio" name="q19" value="B"> B. 不理性，“适合别人的不一定适合自己孩子”</label>
+                <label><input type="radio" name="q19" value="C"> C. 可以理解，“怕孩子落后的心态能共情”</label>
+                <label><input type="radio" name="q19" value="D"> D. 无法认同，“教育不应随大流”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>20. 孩子坚持“用零花钱养流浪猫”（需每天照顾，影响学习时间），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="A"> A. 没收猫咪：“学习都顾不好，还管猫？”</label>
+                <label><input type="radio" name="q20" value="B"> B. 共同照顾：“培养责任心，但约定不影响学习”</label>
+                <label><input type="radio" name="q20" value="C"> C. 妥协：“送到奶奶家，周末去照顾”</label>
+                <label><input type="radio" name="q20" value="D"> D. 抱怨：“别人家孩子都在学习，就你搞这些”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>21. 填报高考志愿时，您更看重：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="A"> A. 专业就业率（如计算机、金融）</label>
+                <label><input type="radio" name="q21" value="B"> B. 孩子的兴趣（如历史、哲学）</label>
+                <label><input type="radio" name="q21" value="C"> C. 学校排名（985/211优先）</label>
+                <label><input type="radio" name="q21" value="D"> D. 地域优势（一线城市优先）</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>22. 孩子说“讨厌数学，想放弃高考选艺考”，您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="A"> A. 拒绝：“艺考竞争更激烈，别逃避数学”</label>
+                <label><input type="radio" name="q22" value="B"> B. 支持：“若真心热爱，愿意陪孩子尝试”</label>
+                <label><input type="radio" name="q22" value="C"> C. 要求：“数学及格才能学艺术”</label>
+                <label><input type="radio" name="q22" value="D"> D. 咨询：“先问艺考机构老师的建议”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>23. 您认为“孩子的同学都在报某兴趣班”对您的影响是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="A"> A. 影响很大，“必须报，否则孩子会被孤立”</label>
+                <label><input type="radio" name="q23" value="B"> B. 有影响，“会考虑，但尊重孩子意愿”</label>
+                <label><input type="radio" name="q23" value="C"> C. 影响较小，“孩子的兴趣更重要”</label>
+                <label><input type="radio" name="q23" value="D"> D. 无影响，“不关注他人选择”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>24. 孩子未来想从事“收入不稳定但热爱的职业”（如作家、画家），您会：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="A"> A. 坚决反对，“必须选择高薪稳定的工作”</label>
+                <label><input type="radio" name="q24" value="B"> B. 支持到底，“人生幸福比收入更重要”</label>
+                <label><input type="radio" name="q24" value="C"> C. 保留意见，“可以尝试，但需设定3年期限”</label>
+                <label><input type="radio" name="q24" value="D"> D. 暗中阻挠，“通过亲戚介绍‘正经工作’”</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>25. 您教育孩子的核心原则是：</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="A"> A. 吃得苦中苦，方为人上人（严格要求）</label>
+                <label><input type="radio" name="q25" value="B"> B. 快乐成长，顺其自然（宽松自由）</label>
+                <label><input type="radio" name="q25" value="C"> C. 折中平衡，既抓成绩也顾兴趣</label>
+                <label><input type="radio" name="q25" value="D"> D. 参照标杆，按“优秀孩子模板”培养</label>
+            </div>
+        </div>
+
+        <!-- 主观题部分 -->
+        <h2 style="border-bottom: 2px solid #4a6fcf; padding-bottom: 10px; margin-top: 40px;">二、情景化主观题（7题，带具体场景）</h2>
+        <div class="question">
+            <p><strong>【小学兴趣班冲突】</strong></p>
+            <p>孩子四年级，想报“学校话剧社”（每周三放学后排练，无比赛），但数学老师单独找您：“孩子计算错误率高，建议停掉所有兴趣班，集中练计算。”孩子说“话剧社能让我更自信，比算题开心”，目前数学75分（满分100）。</p>
+            <textarea id="sub_q1" placeholder="您会如何与孩子沟通？最终决定是什么？理由是？"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【初中群体压力】</strong></p>
+            <p>孩子初二，班级群里家长频繁组织“周末刷题聚会”，并讨论“不参加的孩子考不上重点高中”。您的孩子想去“图书馆做科学实验”（学校布置的探究作业），但担心被同学孤立。</p>
+            <textarea id="sub_q2" placeholder="您会鼓励孩子参加刷题还是支持科学实验？如何处理群体压力与孩子意愿的冲突？"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【高中职业规划】</strong></p>
+            <p>孩子高三，明确表示“想报考二本院校的动画专业”，而您希望他考一本的计算机专业（认为“动画就业难，计算机薪资高”）。孩子说“动画是我从小的梦想，不想妥协”。</p>
+            <textarea id="sub_q3" placeholder="您会采取什么态度？如何平衡现实考量与孩子理想？"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【代际教育反思】</strong></p>
+            <p>回忆您自己的求学经历，父母是否曾因“为你好”而干预过你的重要选择（如文理分科、大学专业）？这件事对您现在的教育方式产生了什么影响？</p>
+            <textarea id="sub_q4" placeholder="请结合个人经历，具体说明父母的干预行为及对您教育观念的影响。"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【极端情景决策】</strong></p>
+            <p>如果孩子坚持选择“与主流成功路径完全相悖”的人生（如18岁辍学创业、出家修行），且无任何现实加成，您会：</p>
+            <textarea id="sub_q5" placeholder="请选择您的态度（全力支持/有限支持/强烈反对），并结合“教育责任”“社会压力”“亲子关系”等因素，详细说明理由。"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【成绩与兴趣平衡】</strong></p>
+            <p>孩子五年级，同时面临“钢琴十级考试”和“数学竞赛决赛”，时间严重冲突。孩子说“更想在竞赛中获奖，但钢琴老师说十级证书对小升初有用”。</p>
+            <textarea id="sub_q6" placeholder="您会引导孩子如何选择？决策时最看重的因素是什么？"></textarea>
+        </div>
+
+        <div class="question">
+            <p><strong>【教育观念自我认知】</strong></p>
+            <p>用三个关键词描述您认同的教育理念（如“尊重”“功利”“沟通”“竞争”“快乐”等），并解释每个关键词对您的意义：</p>
+            <textarea id="sub_q7" placeholder="请写出三个关键词及其解释，每个关键词占一行。例如：
+关键词1：尊重  解释：尊重孩子的兴趣和选择，是培养独立人格的基础。
+关键词2：快乐  解释：快乐成长比短期成绩更重要，有助于孩子的心理健康。
+关键词3：沟通  解释：良好的沟通是理解孩子需求和建立信任的关键。"></textarea>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="submitQuiz()">提交问卷</button>
+        </div>
+    </div>
+
+    <div id="result-page" style="display: none;">
+        <h1>家长教育观念分析结果</h1>
+        <div id="result" class="result-box">
+            <!-- 结果内容将通过JavaScript动态生成 -->
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="location.reload()">返回重新填写</button>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            // 收集所有选择题的答案
+            let selectedOptions = [];
+            for (let i = 1; i <= 25; i++) {
+                let selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption) {
+                    selectedOptions.push(selectedOption.value);
+                }
+            }
+
+            // 收集主观题答案
+            let subjectiveAnswers = [];
+            for (let i = 1; i <= 7; i++) {
+                let subjectiveAnswer = document.getElementById(`sub_q${i}`).value;
+                subjectiveAnswers.push(subjectiveAnswer);
+            }
+
+            // 判断是否合格
+            let aCount = selectedOptions.filter(option => option === 'A').length;
+            let dCount = selectedOptions.filter(option => option === 'D').length;
+            let isQualified = (aCount + dCount) <= 15;
+
+            // 关键词分析
+            let keywords = ["为你好", "别人家孩子", "必须", "只能", "考不上好学校", "丢面子", "浪费时间", "听我的", "成绩最重要"];
+            let keywordCount = 0;
+            for (let answer of subjectiveAnswers) {
+                for (let word of keywords) {
+                    if (answer.includes(word)) {
+                        keywordCount++;
+                    }
+                }
+            }
+            if (keywordCount > 10) {
+                isQualified = false;
+            }
+
+            // 显示结果页面
+            document.getElementById("quiz-page").style.display = "none";
+            document.getElementById("result-page").style.display = "block";
+
+            // 显示结果内容
+            let resultElement = document.getElementById("result");
+            resultElement.innerHTML = `<div class="result-title ${isQualified ? '合格' : '不合格'}">
+                教育观念分析结果：${isQualified ? '<span class="合格">合格</span>' : '<span class="不合格">不合格</span>'}
+            </div>`;
+
+            if (isQualified) {
+                resultElement.innerHTML += `
+                <p class="analysis-text">
+                    您在教育孩子的过程中，能够较好地平衡成绩与兴趣，注重孩子的个性化发展，不盲目跟风攀比，具备现代教育理念。您倾向于尊重孩子的意愿，同时也会合理地引导孩子，帮助他们在兴趣与学业之间找到平衡点。这种教育方式有助于培养孩子的独立思考能力和自我管理能力，为孩子的长远发展打下坚实基础。
+                </p>
+                `;
+            } else {
+                resultElement.innerHTML += `
+                <p class="analysis-text">
+                    您在教育观念中存在一些较为传统的倾向，如过于强调成绩、攀比焦虑、忽视孩子意愿等。您可能更倾向于采用专制的决策方式，较少与孩子进行沟通和协商。这种教育方式可能会在短期内提高孩子的学习成绩，但从长远来看，可能会抑制孩子的创造力、兴趣发展以及独立人格的形成。建议您尝试更多地倾听孩子的声音，关注其兴趣与情感需求，避免单纯的专制决策。
+                </p>
+                `;
+            }
+
+            // 显示选择题和主观题的详细分析
+            resultElement.innerHTML += `
+            <div class="detailed-results">
+                <h3>选择题答案分布：</h3>
+                <p>A选项数量：${aCount}</p>
+                <p>D选项数量：${dCount}</p>
+                <h3>主观题关键词统计：</h3>
+                <p>关键词出现次数：${keywordCount}</p>
+            </div>
+            `;
+        }
+    </script>
+
+    <div class="footer">
+        <p>© 2024 家长教育观念问卷 | 本问卷仅用于教育研究和自我反思，不涉及商业用途</p>
+    </div>
+</body>
+</html>
